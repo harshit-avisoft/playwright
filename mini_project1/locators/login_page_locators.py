@@ -7,3 +7,4 @@ class LoginLocators:
         self.password = page.locator("#password")
         self.login_button = page.locator("#login-button")
         self.error=page.locator(".error-message-container.error")
+        self.error_locked_out_user = page.locator("h3[data-test='error']")

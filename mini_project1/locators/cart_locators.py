@@ -5,6 +5,6 @@ class cart:
         self.page=page
         self.continue_shopping=page.locator("#continue-shopping")
         self.checkout=page.locator("#checkout")
-        self.remove=page.locator("#remove-sauce-labs-backpack")
-        
-    
+        self.remove_backpack=page.locator("#remove-sauce-labs-backpack")
+        self.cart_count=page.locator(".shopping_cart_badge")
+        self.cart_page_title = page.locator("span[data-test='title']")
