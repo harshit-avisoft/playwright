@@ -10,27 +10,63 @@ class DashboardPage:
         expect(self.locator.dashboard_logo).to_have_text("Swag Labs")
 
     def add_to_cart(self, count: int):
-        buttons = self.locator.add_to_cart_buttons
-        remove_buttons = self.locator.remove_buttons
-        total_add_to_cart_buttons=buttons.count()
-        assert buttons.count() >= count, "Not enough items to add"
+     add_buttons = self.locator.add_to_cart_buttons
+     remove_buttons = self.locator.remove_buttons
 
-        for _ in range(count):
-            buttons.first.click()
-        
-        assert total_add_to_cart_buttons==(buttons.count() + remove_buttons.count()),"button is not clicked"
+     initial_add = add_buttons.count()
+     initial_remove = remove_buttons.count()
+
+     assert initial_add >= count, "Not enough items to add"
+
+     for _ in range(count):
+         add_buttons.first.click()
+
+     final_add = add_buttons.count()
+     final_remove = remove_buttons.count()
+
+     assert final_remove - initial_remove == count, (
+         f"Expected {count} items to be added, but only "
+         f"{final_remove - initial_remove} were added"
+     )
     
     def remove_from_cart(self, count: int):
-        buttons = self.locator.add_to_cart_buttons
-        remove_buttons = self.locator.remove_buttons
-        total_add_to_cart_buttons=buttons.count()
-        total_remove_buttons=remove_buttons.count()
-        assert count<remove_buttons.count(), "Not enough items to remove"
+     add_buttons = self.locator.add_to_cart_buttons
+     remove_buttons = self.locator.remove_buttons
 
-        for _ in range(count):
-            remove_buttons.first.click()
+     initial_add = add_buttons.count()
+     initial_remove = remove_buttons.count()
 
-        assert remove_buttons.count()+buttons.count()==total_add_to_cart_buttons+total_remove_buttons,"remove button is not clickable"
+     assert initial_remove >= count, (f"Not enough items to remove. ")
+
+     for _ in range(count):
+         remove_buttons.first.click()
+
+     final_add = add_buttons.count()
+     final_remove = remove_buttons.count()
+
+     assert initial_remove - final_remove == count, ("only" f"{initial_remove - final_remove} were removed")
+
+     assert initial_add + initial_remove == final_add + final_remove, (
+         "UI state inconsistent after remove operation"
+     )
+    
+    def check_cart_alignment(self):
+     cart_container = self.locator.cart_container
+     classes = cart_container.get_attribute("class")
+
+     assert "visual_failure" not in classes, (" Cart is not aligned")
+
+    def check_button_alignment(self):
+        add_buttons = self.locator.add_to_cart_buttons
+        buttons_count=add_buttons.count()
+        for i in range(buttons_count):
+           classes = add_buttons.nth(i).get_attribute("class")
+           assert "btn_inventory_misaligned" not in classes, (" Buttons are not aligned")
+
+    def check_menu_button_alignment(self):
+       classes=self.locator.menu_button.get_attribute("class")
+
+       assert "visual_failure" not in classes, (" menu button is not aligned")
 
     def check_cart_count(self):
         remove_buttons=self.locator.remove_buttons
@@ -40,6 +76,7 @@ class DashboardPage:
 
         assert added_items_count == badge_count, (f"Cart count mismatch: buttons={added_items_count}, badge={badge_count}")
     
+
     def logout(self):
         self.locator.navigate.click()
         self.locator.logout.click()

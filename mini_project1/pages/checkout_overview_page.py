@@ -6,7 +6,7 @@ class checkout_overview_Page:
         self.page = page
         self.locator = checkout_overview(page)
 
-    def check(self):
+    def check_total(self):
         total_text = self.locator.total.inner_text()
         total_bill = float(total_text.split("$")[1])
 

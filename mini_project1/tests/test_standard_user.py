@@ -5,10 +5,12 @@ from mini_project1.pages.checkout_page import checkout_Page
 from mini_project1.pages.checkout_overview_page import checkout_overview_Page
 
 
-def test_page(page):
-    login = LoginPage(page)
+
+def test_valid_purchase(page):
+
+    login=LoginPage(page)
     login.load()
-    login.login("standard_user", "secret_sauce")
+    login.login("standard_user","secret_sauce")  
     assert "inventory" in page.url
 
     
@@ -24,9 +26,9 @@ def test_page(page):
     cart.checkout()
 
     checkout=checkout_Page(page)
-    checkout.buy("Harshit","Pandey","abc")
+    checkout.fill_detail("Harshit","Pandey","abc")
     # checkout.cancel()
 
     checkout_overview=checkout_overview_Page(page)
-    checkout_overview.check()
+    checkout_overview.check_total()
     checkout_overview.pay_bill()

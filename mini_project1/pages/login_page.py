@@ -11,10 +11,11 @@ class LoginPage:
         self.page.goto("https://www.saucedemo.com")
 
     
-    def login(self, user, pwd):
+    def login(self, user,pwd):
         self.locator.username.fill(user)
         self.locator.password.fill(pwd)
         self.locator.login_button.click()
+        
         # self.page.pause()
 
         # return DashboardPage(self.page)

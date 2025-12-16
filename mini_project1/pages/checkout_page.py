@@ -7,15 +7,23 @@ class checkout_Page:
         self.locator = checkout(page)
         expect(self.locator.cart_page_title).to_have_text("Checkout: Your Information")
 
-    def buy(self, firstname=None, lastname=None, postalcode=None):
-        if firstname:
-            self.locator.first_name.fill(firstname)
-        if lastname:
-            self.locator.last_name.fill(lastname)
-        if postalcode:
-            self.locator.postal_code.fill(postalcode)
+    def fill_detail(self, firstname=None, lastname=None, postalcode=None):
+     if firstname:
+        self.locator.first_name.fill(firstname)
+     if lastname:
+        self.locator.last_name.fill(lastname)
+     if postalcode:
+        self.locator.postal_code.fill(postalcode)
 
-        self.locator.continuee.click()
+     self.locator.continuee.click()
+
+     if not firstname:
+        expect(self.locator.error).to_have_text("Error: First Name is required")
+     elif not lastname:
+        expect(self.locator.error).to_have_text("Error: Last Name is required")
+     elif not postalcode:
+        expect(self.locator.error).to_have_text("Error: Postal Code is required")
+       
         # self.page.pause()
 
 

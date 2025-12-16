@@ -24,3 +24,8 @@ class cartPage:
     def checkout(self):
         self.locator.checkout.click()
         # self.page.pause()
+
+    def check_checkout_button_alignment(self):
+       classes=self.locator.checkout.get_attribute("class")
+
+       assert "btn_visual_failure" not in classes, (" checkout button is not aligned")
