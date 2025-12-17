@@ -2,7 +2,6 @@ import random
 from playwright.sync_api import Page, expect
 from mini_project1.locators.dashboard_locators import Dashboard_locators
 # from mini_project1.pages.cart_page import cartPage
-
 class DashboardPage:
     def __init__(self, page: Page):
         self.page = page
@@ -86,21 +85,7 @@ class DashboardPage:
         self.page.pause()
         # return cartPage(self.page)
 
-    def sort_ascending(self):
-        page=self.page
-        self.locator.sort_by.select_option("Name (A to Z)")
-
-        names=[]
-        items=page.locator("div.inventory_item_name")
-        count=items.count()
-
-        for i in range(count):
-            name_text = items.nth(i).inner_text()
-            names.append(name_text)
-
-        assert names == sorted(names), "Product names are NOT sorted A to Z!"
-        # page.pause()    
-
+   
     def sort_low_to_high(self):
         page=self.page
         self.locator.sort_by.select_option("Price (low to high)")
@@ -117,9 +102,12 @@ class DashboardPage:
         # page.pause()
 
     
-    def sort_descending(self):
+    def sort_alphabetically(self,choice):
         page = self.page
-        self.locator.sort_by.select_option("Name (Z to A)")
+        if choice in "ascending":
+            self.locator.sort_by.select_option("Name (A to Z)")
+        if choice in "descending":
+           self.locator.sort_by.select_option("Name (Z to A)")
 
         names = []
         items = page.locator("div.inventory_item_name")
@@ -128,8 +116,13 @@ class DashboardPage:
         for i in range(count):
             name_text = items.nth(i).inner_text()
             names.append(name_text)
-
-        assert names == sorted(names, reverse=True), ("Product names are NOT sorted Z to A!")
+        
+        if choice in "ascending":
+           assert names == sorted(names), "Product names are NOT sorted A to Z!"
+        
+        if choice in "descending":
+            assert names == sorted(names, reverse=True), ("Product names are NOT sorted Z to A!")
+        
         # page.pause()
 
 
@@ -148,5 +141,3 @@ class DashboardPage:
         assert prices == sorted(prices, reverse=True), ("Prices are NOT sorted high to low!")
         # page.pause()
 
-   
-    

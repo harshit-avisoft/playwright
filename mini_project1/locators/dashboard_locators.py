@@ -3,12 +3,6 @@ from playwright.sync_api import Page
 class Dashboard_locators:
     def __init__(self, page: Page):
         self.page = page
-        # self.backpack=page.locator("#add-to-cart-sauce-labs-backpack")
-        # self.bikelight=page.locator("#add-to-cart-sauce-labs-bike-light")
-        # self.bolttshirt=page.locator("#add-to-cart-sauce-labs-bolt-t-shirt")
-        # self.fleece=page.locator("#add-to-cart-sauce-labs-fleece-jacket")
-        # self.onesie=page.locator("#add-to-cart-sauce-labs-onesie")
-        # self.redtshirt=page.locator("#add-to-cart-test.allthethings()-t-shirt-(red)")
         
         self.add_to_cart_buttons = page.locator("button.btn.btn_primary.btn_small.btn_inventory")
         self.remove_buttons = page.locator("button.btn.btn_secondary.btn_small.btn_inventory")

@@ -1,6 +1,8 @@
 from playwright.sync_api import Page, expect
 from mini_project1.locators.login_page_locators import LoginLocators
 # from mini_project1.pages.dashboard_page import DashboardPage
+from cryptography.fernet import Fernet
+from mini_project1.utils.crypto_utils import key,user_name,password
 
 class LoginPage:
     def __init__(self, page: Page):
@@ -12,8 +14,12 @@ class LoginPage:
 
     
     def login(self, user,pwd):
-        self.locator.username.fill(user)
-        self.locator.password.fill(pwd)
+        fernet=Fernet(key)
+        dec_user = fernet.decrypt(user).decode()
+        dec_pwd = fernet.decrypt(pwd).decode()
+
+        self.locator.username.fill(dec_user)
+        self.locator.password.fill(dec_pwd)
         self.locator.login_button.click()
         
         # self.page.pause()
