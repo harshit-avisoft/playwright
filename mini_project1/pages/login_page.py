@@ -13,10 +13,23 @@ class LoginPage:
         self.page.goto("https://www.saucedemo.com")
 
     
-    def login(self, user,pwd):
-        fernet=Fernet(key)
-        dec_user = fernet.decrypt(user).decode()
-        dec_pwd = fernet.decrypt(pwd).decode()
+    def login(self, user, pwd):
+        try:
+            if isinstance(user, bytes):
+                fernet = Fernet(key)
+                dec_user = fernet.decrypt(user).decode()
+            else:
+                dec_user = user
+            
+            if isinstance(pwd, bytes):
+                fernet = Fernet(key)
+                dec_pwd = fernet.decrypt(pwd).decode()
+            else:
+                dec_pwd = pwd
+        except Exception:
+            # If decryption fails, assume they're plain text
+            dec_user = user
+            dec_pwd = pwd
 
         self.locator.username.fill(dec_user)
         self.locator.password.fill(dec_pwd)

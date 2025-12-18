@@ -12,6 +12,7 @@ class Dashboard_locators:
         self.logout=page.locator("#logout_sidebar_link")
         
         self.all_items=page.locator(".inventory_list")
+        self.items_card=page.locator(".inventory_item")
         
         self.sort_by=page.locator("select.product_sort_container")
         

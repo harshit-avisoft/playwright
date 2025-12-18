@@ -1,24 +1,21 @@
 from behave import given, when, then
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect
+from pages.login_page import LoginPage
+from utils.crypto_utils import user_name, password
 
-@given("Given user is on the login page")
-def step_open_login(context):
-    context.playwright = sync_playwright().start()
-    context.browser = context.playwright.chromium.launch(headless=False)
-    context.page = context.browser.new_page()
-    context.page.goto("https://www.saucedemo.com")
 
-@when("When user enters valid username and password")
-def step_enter_credentials(context):
-    context.page.fill("#user-name", "standard_user")
-    context.page.fill("#password", "secret_sauce")
+@given("user is on the login page")
+def step_open_login_page(context):
+    context.login_page = LoginPage(context.page)
+    context.login_page.load()
 
-@when("click on the login button")
-def step_click_login(context):
-    context.page.click("#login-button")
 
-@then("I should see the dashboard")
-def step_verify_dashboard(context):
-    assert context.page.url.endswith("inventory.html")
-    context.browser.close()
-    context.playwright.stop()
+@when("user logs in with valid credentials")
+def step_login_valid_user(context):
+    context.login_page.login(user_name, password)
+
+
+@then("user should be logged in successfully")
+def step_verify_successful_login(context):
+    # Check if URL contains inventory.html (works with different domains)
+    context.page.wait_for_url("**inventory.html")

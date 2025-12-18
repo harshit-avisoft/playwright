@@ -7,9 +7,12 @@ class cartPage:
         self.locator = cart(page)
         expect(self.locator.cart_page_title).to_have_text("Your Cart")
 
-    # def remove(self):
-    #     self.locator.remove_backpack.click()
-    #     expect(self.locator.cart_count).to_have_text("2")
+    def remove(self,count):
+        remove_button=self.locator.remove
+        for _ in range(count):
+            remove_button.first.click()
+        
+
 
     def verify_cart_items_count(self):
         cart_items = self.page.locator("div.cart_item")

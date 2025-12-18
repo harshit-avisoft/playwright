@@ -6,6 +6,8 @@ class DashboardPage:
     def __init__(self, page: Page):
         self.page = page
         self.locator = Dashboard_locators(page)
+        # Wait for dashboard to load before asserting
+        self.page.wait_for_selector(".app_logo")
         expect(self.locator.dashboard_logo).to_have_text("Swag Labs")
 
     def add_to_cart(self, count: int):
@@ -28,6 +30,19 @@ class DashboardPage:
          f"{final_remove - initial_remove} were added"
      )
     
+    def add_by_item_name(self,item_name):
+        items = self.page.locator(".inventory_item")
+        found=False
+        count = items.count()
+        for i in range(count):
+            card = items.nth(i)
+            name = card.locator(".inventory_item_name").inner_text()
+
+            if item_name in name and card.locator("button:has-text('Add to cart')").is_visible():
+                card.locator("button:has-text('Add to cart')").click()
+                found=True
+        assert found , "add to cart button not found"
+
     def remove_from_cart(self, count: int):
      add_buttons = self.locator.add_to_cart_buttons
      remove_buttons = self.locator.remove_buttons
@@ -49,6 +64,23 @@ class DashboardPage:
          "UI state inconsistent after remove operation"
      )
     
+    def remove_by_item_name(self, item_name):
+        items = self.page.locator(".inventory_item")
+        found=False
+        count = items.count()
+        for i in range(count):
+            card = items.nth(i)
+            name = card.locator(".inventory_item_name").inner_text()
+
+            if item_name in name and card.locator("button:has-text('Remove')").is_visible():
+                card.locator("button:has-text('Remove')").click()
+                found=True
+        assert found , "remove button not found"
+        
+
+
+
+
     def check_cart_alignment(self):
      cart_container = self.locator.cart_container
      classes = cart_container.get_attribute("class")
@@ -67,6 +99,8 @@ class DashboardPage:
 
        assert "visual_failure" not in classes, (" menu button is not aligned")
 
+
+
     def check_cart_count(self):
         remove_buttons=self.locator.remove_buttons
         added_items_count = remove_buttons.count()
@@ -75,7 +109,6 @@ class DashboardPage:
 
         assert added_items_count == badge_count, (f"Cart count mismatch: buttons={added_items_count}, badge={badge_count}")
     
-
     def logout(self):
         self.locator.navigate.click()
         self.locator.logout.click()
@@ -84,6 +117,7 @@ class DashboardPage:
         self.locator.cart.click()
         self.page.pause()
         # return cartPage(self.page)
+
 
    
     def sort_low_to_high(self):
@@ -101,7 +135,21 @@ class DashboardPage:
         assert prices == sorted(prices), "Prices are not sorted low to high!"  
         # page.pause()
 
-    
+    def sort_high_to_low(self):
+        page = self.page
+        self.locator.sort_by.select_option("Price (high to low)")
+
+        prices = []
+        items = page.locator("div.pricebar div")
+        count = items.count()
+
+        for i in range(count):
+            price_text = items.nth(i).inner_text().replace("$", "").strip()
+            prices.append(float(price_text))
+
+        assert prices == sorted(prices, reverse=True), ("Prices are NOT sorted high to low!")
+        # page.pause()
+
     def sort_alphabetically(self,choice):
         page = self.page
         if choice in "ascending":
@@ -126,18 +174,4 @@ class DashboardPage:
         # page.pause()
 
 
-    def sort_high_to_low(self):
-        page = self.page
-        self.locator.sort_by.select_option("Price (high to low)")
-
-        prices = []
-        items = page.locator("div.pricebar div")
-        count = items.count()
-
-        for i in range(count):
-            price_text = items.nth(i).inner_text().replace("$", "").strip()
-            prices.append(float(price_text))
-
-        assert prices == sorted(prices, reverse=True), ("Prices are NOT sorted high to low!")
-        # page.pause()
 
