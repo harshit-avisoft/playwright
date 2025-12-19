@@ -9,3 +9,5 @@ def ensure_user_logged_in(context):
         login_page.load()
         login_page.login(user_name, password)
         context.dashboard_page = DashboardPage(context.page)
+        # tags , parallel execution , allure , pass loops in feature file , run in different browser
+        #  behavex features --parallel-processes 2

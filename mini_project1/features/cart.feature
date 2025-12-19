@@ -1,5 +1,6 @@
+@smoke
 Feature: Cart functionality
-
+  @smoke @cart
   Scenario: Verify cart item count
     Given user navigates to cart page
     When user has 2 products in the cart

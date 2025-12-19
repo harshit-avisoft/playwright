@@ -105,8 +105,8 @@ class DashboardPage:
         remove_buttons=self.locator.remove_buttons
         added_items_count = remove_buttons.count()
 
+        # assert self.locator.cart_count.to_be_visible() , "No items added yet"
         badge_count = int(self.locator.cart_count.inner_text())
-
         assert added_items_count == badge_count, (f"Cart count mismatch: buttons={added_items_count}, badge={badge_count}")
     
     def logout(self):
@@ -149,13 +149,14 @@ class DashboardPage:
 
         assert prices == sorted(prices, reverse=True), ("Prices are NOT sorted high to low!")
         # page.pause()
-
+    
     def sort_alphabetically(self,choice):
         page = self.page
-        if choice in "ascending":
+        choice_lower = choice.strip().lower()
+        if choice_lower in "ascending":
             self.locator.sort_by.select_option("Name (A to Z)")
-        if choice in "descending":
-           self.locator.sort_by.select_option("Name (Z to A)")
+        elif choice_lower in "descending":
+            self.locator.sort_by.select_option("Name (Z to A)")
 
         names = []
         items = page.locator("div.inventory_item_name")

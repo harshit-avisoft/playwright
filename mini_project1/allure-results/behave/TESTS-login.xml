@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time="2.291269540786743" tests='3' skipped='0'
+name="Login" failures='0' errors='0'><testcase time="0.6325414180755615" name="Successful_Login_With_Valid_Credentials" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                @login
+                scenario: Successful login with valid credentials
+e                given user is on the login page ... passed in 0.5298s 
+                when 'standard_user' logs in with valid credentials ... passed in 0.09978s 
+                then user should be logged in successfully ... passed in 0.002992s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="0.6973156929016113" name="Locked_Out_User_Trying_To_Login" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                @wip
+                scenario: locked_out_user trying to login
+e                given user is on the login page ... passed in 0.521s 
+                when 'locked_out_user' logs in ... passed in 0.1215s 
+                then user is on the login page ... passed in 0.05485s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="0.9614124298095703" name="User_Login_With_Invalid_Credentials" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                
+                scenario: user login with invalid credentials
+e                given user is on the login page ... passed in 0.8096s 
+                when 'standard_user' logs in with wrong password 'abc' ... passed in 0.08773s 
+                then error message should be displayed 'standard_user' 'abc' ... passed in 0.06408s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase></testsuite>

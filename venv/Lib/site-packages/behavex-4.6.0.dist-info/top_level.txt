@@ -1,0 +1,6 @@
+behavex
+docs
+output
+scripts
+tests
+venv

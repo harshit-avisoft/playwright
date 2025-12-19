@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time="13.792368173599243" tests='2' skipped='0'
+name="Cart" failures='0' errors='0'><testcase time="4.2840564250946045" name="Verify_Cart_Item_Count" status="passed"
+         classname="Cart_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                @smoke   @cart
+                scenario: Verify cart item count
+e                given user navigates to cart page ... passed in 4.259s 
+                when user has 2 products in the cart ... passed in 0.009974s 
+                then cart items count should match badge count ... passed in 0.01496s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="9.508311748504639" name="Checkout_From_Cart" status="passed"
+         classname="Cart_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                @smoke
+                scenario: Checkout from cart
+e                given user has 1 product in the cart ... passed in 9.361s 
+                when user proceeds to checkout ... passed in 0.1397s 
+                then checkout page should be displayed ... passed in 0.007977s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase></testsuite>

@@ -6,4 +6,4 @@ class checkout_overview:
         self.price=page.locator(".inventory_item_price")
         self.total=page.locator(".summary_subtotal_label")
         self.cancel=page.locator("#cancel")
-        self.finish=page.locator("#finish")
+        self.finish=page.locator("#finish") 

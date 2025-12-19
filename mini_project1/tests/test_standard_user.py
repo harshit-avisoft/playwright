@@ -5,6 +5,7 @@ from mini_project1.pages.checkout_page import checkout_Page
 from mini_project1.pages.checkout_overview_page import checkout_overview_Page
 from cryptography.fernet import Fernet
 from mini_project1.utils.crypto_utils import key
+from mini_project1.utils.items import InventoryItems
 
 def test_valid_purchase(page):
     user_name="standard_user"
@@ -20,14 +21,14 @@ def test_valid_purchase(page):
 
     
     dashboard = DashboardPage(page)
-    # dashboard.add_to_cart(5)
-    # dashboard.remove_by_item_name("Sauce Labs Back")
-    # dashboard.add_by_item_name("Sauce Labs Back")
-    # not works for Sauce I don't know why
-    dashboard.remove_by_item_name("Sauce Labs Bike Light")
+    dashboard.add_to_cart(5)
+    dashboard.remove_by_item_name("Sauce Labs Back")
+    # dashboard.add_by_item_name("Sauce")
+    # dashboard.remove_by_item_name(InventoryItems.BIKE_LIGHT)
     dashboard.remove_from_cart(1)
-    # dashboard.check_cart_count() -- not works when count is 0
-    dashboard.sort_alphabetically("descen")
+    dashboard.check_cart_count() 
+    # -- not works when count is 0
+    dashboard.sort_alphabetically("descendin")
     dashboard.open_cart()
     
     cart=cartPage(page)
