@@ -1,43 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite time="9.351118803024292" tests='3' skipped='0'
-name="Login" failures='0' errors='0'><testcase time="1.4708731174468994" name="User_Login_With_Invalid_Credentials" status="passed"
-         classname="Login_Functionality" >
-            <system-out>
-            <![CDATA[
-            @scenario.begin
-                
-                scenario: user login with invalid credentials
-e                given user is on the login page ... passed in 0.9886s 
-                when 'standard_user' logs in with wrong password 'abc' ... passed in 0.3147s 
-                then error message should be displayed 'standard_user' 'abc' ... passed in 0.1676s 
-@scenario.end
-            ----------------------------------------------------------------------------------------------------
-            ]]>
-            </system-out>
-        </testcase><testcase time="3.1338045597076416" name="Locked_Out_User_Trying_To_Login" status="passed"
-         classname="Login_Functionality" >
-            <system-out>
-            <![CDATA[
-            @scenario.begin
-                @wip
-                scenario: locked_out_user trying to login
-e                given user is on the login page ... passed in 1.33s 
-                when 'locked_out_user' logs in ... passed in 1.602s 
-                then user is on the login page ... passed in 0.2015s 
-@scenario.end
-            ----------------------------------------------------------------------------------------------------
-            ]]>
-            </system-out>
-        </testcase><testcase time="4.746441125869751" name="Successful_Login_With_Valid_Credentials" status="passed"
+<testsuite time="2.790602922439575" tests='4' skipped='0'
+name="Login" failures='0' errors='0'><testcase time="0.7265326976776123" name="Successful_Login_With_Valid_Credentials" status="passed"
          classname="Login_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 @login
                 scenario: Successful login with valid credentials
-e                given user is on the login page ... passed in 1.586s 
-                when 'standard_user' logs in with valid credentials ... passed in 3.154s 
-                then user should be logged in successfully ... passed in 0.005983s 
+e                given user is on the login page ... passed in 0.606s 
+                when 'standard_user' logs in with valid credentials ... passed in 0.1171s 
+                then user should be logged in successfully ... passed in 0.00344s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="0.728689432144165" name="Locked_Out_User_Trying_To_Login" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                @wip
+                scenario: locked_out_user trying to login
+e                given user is on the login page ... passed in 0.577s 
+                when 'locked_out_user' logs in ... passed in 0.1126s 
+                then user is on the login page ... passed in 0.03905s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="0.758103609085083" name="User_Login_With_Invalid_Credentials" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                
+                scenario: user login with invalid credentials
+e                given user is on the login page ... passed in 0.5692s 
+                when 'standard_user' logs in with wrong password 'abc' ... passed in 0.1067s 
+                then error message should be displayed 'standard_user' 'abc' ... passed in 0.08215s 
+@scenario.end
+            ----------------------------------------------------------------------------------------------------
+            ]]>
+            </system-out>
+        </testcase><testcase time="0.5772771835327148" name="User_Logins_With_Different_Ids" status="passed"
+         classname="Login_Functionality" >
+            <system-out>
+            <![CDATA[
+            @scenario.begin
+                
+                scenario: user logins with different id's
+e                given user is on the login page ... passed in 0.5751s 
+                    |username|password
+                    |admin1|admin2|admin3
+                    |admin123|admin123|admin123
+                when user enters login details ... passed in 0.00106s 
+                then API response should be ... passed in 0.001093s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>

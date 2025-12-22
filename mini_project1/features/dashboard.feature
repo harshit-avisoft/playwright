@@ -1,5 +1,9 @@
 Feature: Dashboard functionality
   
+  # Background is a set of steps that run automatically before every scenario in the same feature file.
+
+  # Background:
+  # Given user is on login page
   Scenario: Remove items when no item is added
     Given user is logged in
     When user remove 'Sauce Labs Backpack' from the inventory
@@ -21,6 +25,7 @@ Feature: Dashboard functionality
     When user removes 2 product from the cart
     Then cart badge should be updated correctly
   
+  @ui
   Scenario: Add items by their name
     Given user is logged in
     When add 'Sauce Labs Backpack' to inventory
@@ -42,3 +47,10 @@ Feature: Dashboard functionality
       | order      |
       | ascending  |
       | descending |
+
+# Text with step parameters
+    # Scenario: add items
+    #  Given user is logged in
+    #  When user adds 3 products to the dashboard cart
+    #  When user adds 2 products to the dashboard cart
+    

@@ -33,3 +33,11 @@ def step_wrong_password(context,user_name,pwd):
 def step_error_message(context,user_name,pwd):
     context.login_page.check_credentials(user_name,pwd)
     
+@when('user enters login details')
+def step_table(context):
+    for row in context.table:
+        print(row['username'], row['password'])
+
+@then('API response should be')
+def step_docstring(context):
+    print(context.text)

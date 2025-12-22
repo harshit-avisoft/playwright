@@ -62,3 +62,4 @@ def step_user_has_these_products(context, count):
     current_count = context.cart_page.locator.remove.count()
     to_add = count - current_count
     # assert to_add==0 , ("abc")
+    

@@ -64,3 +64,9 @@ def step_sort_items(context, order):
 def step_verify_sorted_items(context, order):
     # validation already happens inside sort_alphabetically
     pass
+
+# @when('user adds {n} products to the dashboard cart')
+# def step_page(context, n):
+#     ensure_user_logged_in(context)
+#     context.dashboard_page.add_to_cart(n)
+    

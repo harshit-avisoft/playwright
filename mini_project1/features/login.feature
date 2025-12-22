@@ -16,3 +16,18 @@ Feature: Login functionality
     Given user is on the login page
     When 'standard_user' logs in with wrong password 'abc'
     Then error message should be displayed 'standard_user' 'abc'
+
+    Scenario: user logins with different id's
+      Given user is on the login page
+      When user enters login details
+      | username | password |
+      | admin1   | admin123 |
+      | admin2   | admin123 |
+      | admin3   | admin123 |
+      Then API response should be
+"""
+{
+  "status": "success"
+}
+"""
+

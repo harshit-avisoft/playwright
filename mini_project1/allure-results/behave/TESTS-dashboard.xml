@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite time="7.200818777084351" tests='8' skipped='0'
-name="Dashboard" failures='2' errors='0'><testcase time="0.6981654167175293" name="Remove_Items_When_No_Item_Is_Added" status="failed"
+<testsuite time="7.761169672012329" tests='8' skipped='0'
+name="Dashboard" failures='2' errors='0'><testcase time="0.8092479705810547" name="Remove_Items_When_No_Item_Is_Added" status="failed"
          classname="Dashboard_Functionality" >
             <failure type="AssertionError" message="remove button not found">
-                    <![CDATA[ Failing step: when user remove 'Sauce Labs Backpack' from the inventory ... failed in 0.04588s  Location:features/dashboard.feature
+                    <![CDATA[ Failing step: when user remove 'Sauce Labs Backpack' from the inventory ... failed in 0.04997s  Location:features/dashboard.feature
                         Traceback (most recent call last):
 
                   File "C:\Users\pc\Documents\playwright\venv\Lib\site-packages\behave\model.py", line 1991, in run
@@ -26,17 +26,17 @@ name="Dashboard" failures='2' errors='0'><testcase time="0.6981654167175293" nam
             @scenario.begin
                 
                 scenario: Remove items when no item is added
-e                given user is logged in ... passed in 0.6523s 
-                when user remove 'Sauce Labs Backpack' from the inventory ... failed in 0.04588s 
+e                given user is logged in ... passed in 0.7593s 
+                when user remove 'Sauce Labs Backpack' from the inventory ... failed in 0.04997s 
                 then cart badge should be updated correctly ... skipped in 0.0s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="1.1888575553894043" name="Add_One_Item_When_All_Items_Are_Added_Already" status="failed"
+        </testcase><testcase time="1.0824291706085205" name="Add_One_Item_When_All_Items_Are_Added_Already" status="failed"
          classname="Dashboard_Functionality" >
             <failure type="AssertionError" message="add to cart button not found">
-                    <![CDATA[ Failing step: then add 'Sauce Labs Backpack' to inventory ... failed in 0.0379s  Location:features/dashboard.feature
+                    <![CDATA[ Failing step: then add 'Sauce Labs Backpack' to inventory ... failed in 0.04289s  Location:features/dashboard.feature
                         Traceback (most recent call last):
 
                   File "C:\Users\pc\Documents\playwright\venv\Lib\site-packages\behave\model.py", line 1991, in run
@@ -59,96 +59,96 @@ e                given user is logged in ... passed in 0.6523s
             @scenario.begin
                 
                 scenario: Add one item when all items are added already
-e                given user is logged in ... passed in 0.9286s 
-                when user adds 6 products to the dashboard cart ... passed in 0.2224s 
-                then add 'Sauce Labs Backpack' to inventory ... failed in 0.0379s 
+e                given user is logged in ... passed in 0.8117s 
+                when user adds 6 products to the dashboard cart ... passed in 0.2278s 
+                then add 'Sauce Labs Backpack' to inventory ... failed in 0.04289s 
                 then cart badge should be updated correctly ... skipped in 0.0s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="0.8297512531280518" name="Add_Items_To_Cart_From_Dashboard" status="passed"
+        </testcase><testcase time="0.9352312088012695" name="Add_Items_To_Cart_From_Dashboard" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 
                 scenario: Add items to cart from dashboard
-e                given user is logged in ... passed in 0.6921s 
-                when user adds 3 products to the dashboard cart ... passed in 0.1277s 
-                then cart badge should be updated correctly ... passed in 0.009972s 
+e                given user is logged in ... passed in 0.7762s 
+                when user adds 3 products to the dashboard cart ... passed in 0.1481s 
+                then cart badge should be updated correctly ... passed in 0.01085s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="0.9263041019439697" name="Remove_Items_From_Cart_From_Dashboard" status="passed"
+        </testcase><testcase time="1.0594747066497803" name="Remove_Items_From_Cart_From_Dashboard" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 
                 scenario: Remove items from cart from dashboard
-e                given user has 3 products in the dashboard cart ... passed in 0.8502s 
-                when user removes 2 product from the cart ... passed in 0.06912s 
-                then cart badge should be updated correctly ... passed in 0.007016s 
+e                given user has 3 products in the dashboard cart ... passed in 0.9421s 
+                when user removes 2 product from the cart ... passed in 0.1048s 
+                then cart badge should be updated correctly ... passed in 0.01261s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="1.10107421875" name="Add_Items_By_Their_Name" status="passed"
+        </testcase><testcase time="0.9564392566680908" name="Add_Items_By_Their_Name" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
-                
+                @ui
                 scenario: Add items by their name
-e                given user is logged in ... passed in 0.9395s 
-                when add 'Sauce Labs Backpack' to inventory ... passed in 0.07979s 
-                when add 'Sauce Labs Bike Light' to inventory ... passed in 0.0748s 
-                then cart badge should be updated correctly ... passed in 0.006982s 
+e                given user is logged in ... passed in 0.7818s 
+                when add 'Sauce Labs Backpack' to inventory ... passed in 0.0877s 
+                when add 'Sauce Labs Bike Light' to inventory ... passed in 0.07706s 
+                then cart badge should be updated correctly ... passed in 0.009836s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="0.9669027328491211" name="Remove_Items_By_Their_Name" status="passed"
+        </testcase><testcase time="1.1036410331726074" name="Remove_Items_By_Their_Name" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 
                 scenario: Remove items by their name
-e                given user is logged in ... passed in 0.673s 
-                when user adds 6 products to the dashboard cart ... passed in 0.2204s 
-                when user remove 'Sauce Labs Backpack' from the inventory ... passed in 0.0645s 
-                then cart badge should be updated correctly ... passed in 0.008974s 
+e                given user is logged in ... passed in 0.7346s 
+                when user adds 6 products to the dashboard cart ... passed in 0.2674s 
+                when user remove 'Sauce Labs Backpack' from the inventory ... passed in 0.08237s 
+                then cart badge should be updated correctly ... passed in 0.01919s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="0.7384641170501709" name="Sort_Items_Alphabetically_--_@1.1_" status="passed"
+        </testcase><testcase time="0.9058079719543457" name="Sort_Items_Alphabetically_--_@1.1_" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 
                 scenario: Sort items alphabetically -- @1.1 
-e                given user is logged in ... passed in 0.6853s 
-                when user sorts items "ascending" ... passed in 0.0532s 
+e                given user is logged in ... passed in 0.7901s 
+                when user sorts items "ascending" ... passed in 0.1157s 
                 then items should be sorted "ascending" ... passed in 0.0s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
             </system-out>
-        </testcase><testcase time="0.7512993812561035" name="Sort_Items_Alphabetically_--_@1.2_" status="passed"
+        </testcase><testcase time="0.9088983535766602" name="Sort_Items_Alphabetically_--_@1.2_" status="passed"
          classname="Dashboard_Functionality" >
             <system-out>
             <![CDATA[
             @scenario.begin
                 
                 scenario: Sort items alphabetically -- @1.2 
-e                given user is logged in ... passed in 0.6865s 
-                when user sorts items "descending" ... passed in 0.06383s 
-                then items should be sorted "descending" ... passed in 0.0009964s 
+e                given user is logged in ... passed in 0.8009s 
+                when user sorts items "descending" ... passed in 0.108s 
+                then items should be sorted "descending" ... passed in 0.0s 
 @scenario.end
             ----------------------------------------------------------------------------------------------------
             ]]>
